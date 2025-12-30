@@ -1,7 +1,10 @@
 mod fog;
 mod engine;
+mod logger;
 
 fn main() {
+    logger::init();
+
     let target_dir = "./";
 
     let files = fog::scanner::scan_dir(target_dir);
