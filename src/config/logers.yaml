@@ -1,0 +1,27 @@
+appenders:
+  stdout:
+    kind: console
+    encoder:
+      pattern: "[{d(%Y-%m-%d %H:%M:%S %Z)}] [{h({l:5.5})}] [{P}] - {m}{n}"
+
+  file:
+    kind: rolling_file
+    path: logs/app.log
+    encoder: 
+      pattern:  "[{d(%Y-%m-%d %H:%M:%S %Z)}] [{h({l})}] [{P}] - {m}{n}" 
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 5mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: logs/app.{}.log
+
+root:
+  level: info
+  appenders:
+    - stdout
+    - file
