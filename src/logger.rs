@@ -1,7 +1,7 @@
 use log4rs::{config::Deserializers, init_file};
 
 pub fn init() {
-    let config_path = "config/logers.yaml";
+    let config_path = "./src/config/logers.yaml";
 
     let mut deserializers = Deserializers::new();
 
